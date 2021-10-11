@@ -16,4 +16,11 @@
 
     <mvc:annotation-driven/>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.bjpowernode.crm.web.handler.LoginInterceptor" ></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>

@@ -14,6 +14,7 @@
     <script type="text/javascript" src="jquery/bootstrap_3.3.0/js/bootstrap.min.js"></script>
 
     <script>
+
         $(function () {
 
             $("#loginACT").focus();
@@ -56,9 +57,11 @@
 
                     if(data.success){
                         //跳转到工作台的初始页
-                        window.location.href = "workbench/index.html";
+                        window.location.href = "workbench/index.jsp";
                     }else{
-                        $("msg").html(data.msg)
+                        alert(data.success)
+                        alert(data.msg)
+                        $("#msg").html(data.msg)
                     }
                 }
             })

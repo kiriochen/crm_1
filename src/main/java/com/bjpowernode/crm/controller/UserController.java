@@ -26,29 +26,31 @@ public class UserController {
 
     @RequestMapping(value = "/login.do",method = RequestMethod.POST)
     @ResponseBody
-    public void login(String loginAct, String loginPwd, HttpServletRequest request, HttpServletResponse response){
+    public Map<String, Object> login(String loginAct, String loginPwd, HttpServletRequest request, HttpServletResponse response){
 
         loginPwd = MD5Util.getMD5(loginPwd);
 
         String ip = request.getRemoteAddr();
+        Map<String,Object> map = new HashMap<>();
 
         //登陆失败走catch,无异常说明登陆成功
         try{
             User user = service.queryUser(loginAct,loginPwd,ip);
 
             request.getSession().setAttribute("user", user);
+            map.put("success", false);
 
-            PrintJson.printJsonFlag(response, true);
+            return map;
 
         }catch (Exception e){
             e.printStackTrace();
             String msg = e.getMessage();
 
-            Map<String,Object> map = new HashMap<>();
+
             map.put("success", false);
             map.put("msg",msg);
 
-            PrintJson.printJsonObj(response,map);
+            return map;
 
 
         }
