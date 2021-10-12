@@ -38,7 +38,7 @@ public class UserController {
             User user = service.queryUser(loginAct,loginPwd,ip);
 
             request.getSession().setAttribute("user", user);
-            map.put("success", false);
+            map.put("success", true);
 
             return map;
 

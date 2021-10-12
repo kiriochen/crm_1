@@ -17,6 +17,10 @@
 
         $(function () {
 
+
+            if(window.top != window){
+                window.top.location = window.location;
+            }
             $("#loginACT").focus();
 
             $("#sumbitBtn").click(function () {
@@ -59,8 +63,6 @@
                         //跳转到工作台的初始页
                         window.location.href = "workbench/index.jsp";
                     }else{
-                        alert(data.success)
-                        alert(data.msg)
                         $("#msg").html(data.msg)
                     }
                 }
