@@ -20,7 +20,40 @@ request.getContextPath() + "/" ;
 <script type="text/javascript">
 
 	$(function(){
-		
+
+		$("#addBtn").click(function () {
+
+
+			//$("#createActivityModal").modal("show");
+
+
+			$.ajax({
+				url:"workbench/activity/getUserList.do",
+				data:{
+
+				},
+				type:"get",
+				datatype: "json",
+				success:function (data) {
+
+					var html = "<option></option>";
+					$.each(data,function (i,n) {
+
+						html += "<option value='"+ n.id +"'>"+ n.name +"</option>";
+
+					})
+
+					$("#create-marketActivityOwner").html(html);
+
+					var id= "${user.id}";
+
+					$("#create-marketActivityOwner").val(id);
+
+					$("#createActivityModal").modal("show");
+
+				}
+			})
+		})
 		
 		
 	});
@@ -47,9 +80,7 @@ request.getContextPath() + "/" ;
 							<label for="create-marketActivityOwner" class="col-sm-2 control-label">所有者<span style="font-size: 15px; color: red;">*</span></label>
 							<div class="col-sm-10" style="width: 300px;">
 								<select class="form-control" id="create-marketActivityOwner">
-								  <option>zhangsan</option>
-								  <option>lisi</option>
-								  <option>wangwu</option>
+
 								</select>
 							</div>
                             <label for="create-marketActivityName" class="col-sm-2 control-label">名称<span style="font-size: 15px; color: red;">*</span></label>
@@ -208,7 +239,7 @@ request.getContextPath() + "/" ;
 			</div>
 			<div class="btn-toolbar" role="toolbar" style="background-color: #F7F7F7; height: 50px; position: relative;top: 5px;">
 				<div class="btn-group" style="position: relative; top: 18%;">
-				  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createActivityModal"><span class="glyphicon glyphicon-plus"></span> 创建</button>
+				  <button type="button" class="btn btn-primary" id="addBtn"><span class="glyphicon glyphicon-plus"></span> 创建</button>
 				  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editActivityModal"><span class="glyphicon glyphicon-pencil"></span> 修改</button>
 				  <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> 删除</button>
 				</div>
