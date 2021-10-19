@@ -6,7 +6,7 @@
 
 <!--        spring的配置文件：声明service,dao,工具类等对象-->
 
-    <context:property-placeholder location="classpath:conf/jdbc.propreties"/>
+    <context:property-placeholder location="classpath:conf/jdbc.properties"/>
 
     <!-- 声明数据源，连接数据库-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">

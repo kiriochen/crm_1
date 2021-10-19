@@ -22,7 +22,6 @@ public class LoginInterceptor implements HandlerInterceptor {
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
 
-
             //user不为空说明登陆过
             if(user != null){
                 return true;

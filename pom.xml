@@ -102,6 +102,16 @@
         </includes>
         <filtering>false</filtering>
       </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*.xml</include>
+          <include>**/*.yml</include>
+          <include>**/*.vm</include>
+          <include>**/*.properties</include>
+        </includes>
+        <filtering>false</filtering>
+      </resource>
     </resources>
     <plugins>
       <plugin>
